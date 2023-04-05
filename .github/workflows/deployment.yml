@@ -9,21 +9,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Building..."
-  deploy-dev:
+  deploy-development:
     name: "Deploy To Dev"
     runs-on: ubuntu-latest
     environment: "Development"
+    needs: ["build"]
     steps:
       - run: echo "Deploying to development"
-  deploy-stage:
+  deploy-staging:
     name: "Deploy To Staging"
     runs-on: ubuntu-latest
     environment: "Staging"
+    needs: ["build", "deploy-development"]
     steps:
       - run: echo "Deploying to staging"
   deploy-production:
     name: "Deploy To Production"
     runs-on: ubunut-latest
     environment: "Production"
+    needs: ["build", "deploy-staging"]
     steps:
       - run: echo "Deploys to production"
