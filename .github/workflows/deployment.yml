@@ -1,4 +1,4 @@
-name: deployment
+name: build
 run-name: Deployment
 on: workflow_dispatch
 jobs:
@@ -6,22 +6,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "building"
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "testing"
-  deploy-development:
-    runs-on: ubuntu-latest
-    name: "Deploy Development"
-    steps:
-      - run: echo "deploying development"
-  deploy-staging:
-    runs-on: ubuntu-latest
-    name: "Deploy Staging"
-    steps:
-      - run: echo "Deploy Staging"
-  deploy-production:
-    runs-on: ubuntu-latest
-    name: "Deploy Production"
-    steps:
-      - run: echo "Deploy Production"
