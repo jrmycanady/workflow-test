@@ -1,8 +1,29 @@
-name: build
-run-name: Deployment
-on: workflow_dispatch
+name: 'Release Deployment'
+
+on:
+  workflow_dispatch
+
 jobs:
   build:
+    name: "Build"
     runs-on: ubuntu-latest
     steps:
-      - run: echo "building"
+      - run: echo "Building..."
+  deploy-dev:
+    name: "Deploy To Dev"
+    runs-on: ubuntu-latest
+    environment: "Development"
+    steps:
+      - run: echo "Deploying to development"
+  deploy-stage:
+    name: "Deploy To Staging"
+    runs-on: ubuntu-latest
+    environment: "Staging"
+    steps:
+      - run: echo "Deploying to staging"
+  deploy-production:
+    name: "Deploy To Production"
+    runs-on: ubunut-latest
+    environment: "Production"
+    steps:
+      - run: echo "Deploys to production"
