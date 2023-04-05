@@ -1,0 +1,13 @@
+name: deploy_dev
+run-name: Deploy To Dev
+on: 
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["build"]
+    types:
+      - complete
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "building"
